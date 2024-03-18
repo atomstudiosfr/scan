@@ -1,0 +1,5 @@
+1. MVP
+- Make a scraper for searching on 3 websites (reaperscan.com, asurascan.com, webtoon)
+- Download all mangas
+- Make some endpoint to retrieve the manga
+- Make an HTML page, exposed with fastapi
