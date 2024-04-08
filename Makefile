@@ -5,7 +5,7 @@ PYTHON_VERSION := python3.12
 .PHONY: install
 install:
 	python -m pip install -U pip
-	pip install -r ./requirements.txt
+	pip install -r ./backend/requirements.txt
 
 .PHONY: run
 run:

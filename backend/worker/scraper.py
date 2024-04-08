@@ -4,7 +4,7 @@ from pathlib import Path
 import requests
 from bs4 import BeautifulSoup, Tag
 
-from scan.backend.worker.schema import Book, Provider, Chapter
+from backend.worker.schema import Book, Provider, Chapter
 
 
 def get_all_books(url: str) -> list[Book]:
