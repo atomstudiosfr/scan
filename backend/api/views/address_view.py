@@ -28,7 +28,7 @@ from core.exceptions import NoCorrectedAddressFound
 from api.redis import redisDep, get_redis
 from core.schema import AddressMixSchema, AddressSchema, ProviderEnum, \
     AddressMixSchemaWithMissing
-from api.utils import parse_list
+from core.utils import parse_list
 from worker.celery_worker import app
 
 router = APIRouter(

@@ -11,4 +11,4 @@ RUN pip install -r /app/requirements.txt
 
 COPY backend/ /app/
 
-CMD uvicorn api.main:create_app --factory --host 0.0.0.0 --port 5002 --use-colors --proxy-headers --forwarded-allow-ips '*' --loop uvloop --http httptools
+CMD celery -A worker.celery_worker worker --concurrency=$WORKER_CONCURRENCY --without-gossip -Q $QUEUE
