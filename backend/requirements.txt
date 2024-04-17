@@ -19,7 +19,7 @@ sqladmin==0.16.1
 
 #### Security
 python-jose==3.3.0
-itsdangerous==2.1.2
+itsdangerous==2.2.0
 passlib==1.7.4
 
 #### Monitoring
