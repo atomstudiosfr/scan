@@ -15,7 +15,7 @@ sqlalchemy[asyncio]==2.0.29
 pydantic==2.7.0
 pydantic-settings==2.2.1
 alembic==1.13.1
-sqladmin==0.16.1
+sqladmin==0.18.0
 
 #### Security
 python-jose==3.3.0
