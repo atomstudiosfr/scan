@@ -12,7 +12,7 @@ httptools==0.6.1
 #### Database & Model
 psycopg[binary, pool]==3.1.18
 sqlalchemy[asyncio]==2.0.29
-pydantic==2.7.0
+pydantic==2.8.0
 pydantic-settings==2.2.1
 alembic==1.13.1
 sqladmin==0.16.1
