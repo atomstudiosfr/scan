@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ScanService} from '../../services/scan.service';
+import { ScanService } from '../services/scan.service';
 
 @Component({
   selector: 'app-scan-details',
@@ -10,6 +10,9 @@ import {ScanService} from '../../services/scan.service';
     <div *ngIf="selectedScan">
       <h2>{{selectedScan.title}}</h2>
       <p>{{selectedScan.description}}</p>
+      <ul>
+        <li *ngFor="let chapter of selectedScan.chapters" (click)="selectChapter(chapter)">{{chapter.title}}</li>
+      </ul>
     </div>
   `,
   styles: [`
@@ -23,5 +26,9 @@ export class ScanDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.scanService.getSelectedScan().subscribe(scan => this.selectedScan = scan);
+  }
+
+  selectChapter(chapter): void {
+    this.scanService.selectScan(chapter);
   }
 }

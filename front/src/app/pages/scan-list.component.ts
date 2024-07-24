@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
-import {ScanService} from '../../services/scan.service';
+import {ScanService} from '../services/scan.service';
 
 @Component({
   selector: 'app-scan-list',

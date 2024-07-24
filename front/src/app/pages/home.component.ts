@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
-import {ScanService} from '../../services/scan.service';
+import { ScanService } from '../services/scan.service';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +15,7 @@ import {ScanService} from '../../services/scan.service';
       <p-table [value]="scans">
         <ng-template pTemplate="header">
           <tr>
+            <th>Cover</th>
             <th>Title</th>
             <th>Author</th>
             <th>Actions</th>
@@ -22,6 +23,7 @@ import {ScanService} from '../../services/scan.service';
         </ng-template>
         <ng-template pTemplate="body" let-scan>
           <tr>
+            <td><img [src]="scan.cover" alt="{{scan.title}} cover" class="manga-cover"></td>
             <td>{{scan.title}}</td>
             <td>{{scan.author}}</td>
             <td>
@@ -33,7 +35,10 @@ import {ScanService} from '../../services/scan.service';
     </div>
   `,
   styles: [`
-    /* Add styles for home component */
+    .manga-cover {
+      width: 100px;
+      height: auto;
+    }
   `]
 })
 export class HomeComponent implements OnInit {
