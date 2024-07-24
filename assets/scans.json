@@ -1,0 +1,48 @@
+[
+  {
+    "title": "Manga 1",
+    "author": "Author 1",
+    "description": "Description 1",
+    "cover": "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/manga1/cover.jpg",
+    "chapters": [
+      {
+        "title": "Chapter 1",
+        "pages": [
+          "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/manga1/chapter1/1.webp",
+          "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/manga1/chapter1/2.webp",
+          "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/manga1/chapter1/3.webp",
+          "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/manga1/chapter1/4.webp",
+          "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/manga1/chapter1/5.webp"
+        ]
+      },
+      {
+        "title": "Chapter 2",
+        "pages": [
+          "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/manga1/chapter2/1.webp",
+          "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/manga1/chapter2/2.webp",
+          "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/manga1/chapter2/3.webp",
+          "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/manga1/chapter2/4.webp",
+          "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/manga1/chapter2/5.webp"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Manga 2",
+    "author": "Author 2",
+    "description": "Description 2",
+    "cover": "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/manga2/cover.jpg",
+    "chapters": [
+      {
+        "title": "Chapter 1",
+        "pages": [
+          "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/manga2/chapter1/1.webp",
+          "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/manga2/chapter1/2.webp",
+          "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/manga2/chapter1/3.webp",
+          "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/manga2/chapter1/4.webp",
+          "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/manga2/chapter1/5.webp"
+        ]
+      }
+    ]
+  }
+]
