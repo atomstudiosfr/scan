@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
   scans: any[];
   responsiveOptions: any[];
 
-  constructor(private scanService: ScanService, private router: Router) {
+  constructor(public scanService: ScanService, private router: Router) {
     this.responsiveOptions = [
       {
         breakpoint: '1024px',

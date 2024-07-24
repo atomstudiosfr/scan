@@ -44,7 +44,7 @@ export class ScanService {
   }
 
   getMangaCover(manga: string): string {
-    return `${this.baseUrl}${manga}/cover.jpg`;
+    return `${this.baseUrl}$`;
   }
 
   getChapterPages(manga: string, chapter: string): string[] {
