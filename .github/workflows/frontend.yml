@@ -22,6 +22,6 @@ jobs:
         password: ${{ secrets.SCALEWAY_API_KEY }}
         registry: rg.fr-par.scw.cloud/atom-namespace
     - name: Build the Docker image
-      run: docker build . -f ./frontend/Dockerfile -t rg.fr-par.scw.cloud/atom-namespace/apps/scan-frontend
+      run: docker build ./frontend -f ./frontend/Dockerfile -t rg.fr-par.scw.cloud/atom-namespace/apps/scan-frontend
     - name: Push the Docker Image
       run: docker push rg.fr-par.scw.cloud/atom-namespace/apps/scan-frontend

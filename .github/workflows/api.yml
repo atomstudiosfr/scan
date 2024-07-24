@@ -28,28 +28,21 @@ jobs:
     - name: Push the Docker Image
       run: docker push rg.fr-par.scw.cloud/atom-namespace/apps/scan-api
 
-#  deploy:
-#    needs: [build]
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Set the Kubernetes context
-#        uses: azure/k8s-set-context@v2
-#        with:
-#          method: service-account
-#          k8s-url: <server-url>
-#          k8s-secret: ${{ secrets.KUBERNETES_SECRET }}
-#
-#      - name: Checkout source code
-#        uses: actions/checkout@v3
-#
-#      - name: Deploy to the Kubernetes cluster
-#        uses: azure/k8s-deploy@v1
-#        with:
-#          namespace: default
-#          manifests: |
-#            kubernetes/api-deployment.yaml
-#            kubernetes/api-ingress.yaml
-#            kubernetes/api-service.yaml
-#          images: |
-#            ghcr.io/username/package:${{ github.sha }}
-#
+  deploy:
+    needs: [build]
+    runs-on: 'ubuntu-latest'
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: 'Deploy'
+      uses: 'deliverybot/helm@v1'
+      with:
+        release: 'nginx'
+        track: canary
+        namespace: 'default'
+        chart: 'app'
+        token: '${{ github.token }}'
+        values: |
+          name: foobar
+      env:
+        KUBECONFIG_FILE: '${{ secrets.KUBECONFIG }}'
