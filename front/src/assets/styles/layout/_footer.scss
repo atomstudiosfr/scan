@@ -1,0 +1,20 @@
+.layout-footer {
+    transition: margin-left $transitionDuration;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--surface-border);
+}
+
+.fx-socials {
+    a {
+        padding: 0.4rem;
+        font-size: 20px;
+        color: var(--text-color-secondary);
+        transition: color ease-out 0.1s;
+
+        &:hover {
+            color: var(--primary-color);
+        }
+    }
+}

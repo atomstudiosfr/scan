@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ScanService {
   private scans = new BehaviorSubject<any[]>([]);
+  private filteredScans = new BehaviorSubject<any[]>([]);
   private selectedScan = new BehaviorSubject<any>(null);
 
   constructor() {
@@ -64,10 +65,16 @@ export class ScanService {
       }
     ];
     this.scans.next(scans);
+    this.filteredScans.next(scans);
   }
 
   getScans(): Observable<any[]> {
-    return this.scans.asObservable();
+    return this.filteredScans.asObservable();
+  }
+
+  searchScans(query: string) {
+    const filtered = this.scans.getValue().filter(scan => scan.title.toLowerCase().includes(query.toLowerCase()));
+    this.filteredScans.next(filtered);
   }
 
   selectScan(scan): void {

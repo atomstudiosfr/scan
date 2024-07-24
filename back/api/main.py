@@ -6,7 +6,7 @@ from prometheus_fastapi_instrumentator import Instrumentator
 from api import admin
 from core.config import SETTINGS
 from core.db import ASYNC_ENGINE
-from api.views import user_view
+from api.views import user_view, scan_view
 
 
 def create_app():
@@ -16,6 +16,10 @@ def create_app():
             "name": "User",
             "description": "User ",
         },
+        {
+            "name": "Scans",
+            "description": "Operations related to manga scans",
+        }
     ]
     app = FastAPI(
         title=SETTINGS.PROJECT_NAME,
@@ -39,6 +43,7 @@ def create_app():
         ],
     )
     app.include_router(user_view.router)
+    app.include_router(scan_view.router, prefix="/api", tags=["Scans"])
 
     admin.add(app, ASYNC_ENGINE)
 
@@ -53,4 +58,4 @@ def create_app():
 if __name__ == "__main__":
     from uvicorn import run
 
-    run("api.main:create_app", host='0.0.0.0', port=5002, reload=True, factory=True)
+    run("main:create_app", host='0.0.0.0', port=5002, reload=True, factory=True)

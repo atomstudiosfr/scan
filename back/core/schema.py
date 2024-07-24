@@ -1,3 +1,5 @@
+from typing import List
+
 from pydantic import BaseModel
 
 
@@ -10,3 +12,16 @@ class User(BaseModel):
     email: str
     full_name: str
     disabled: bool = None
+
+
+class Chapter(BaseModel):
+    title: str
+    pages: List[str]
+
+
+class Manga(BaseModel):
+    title: str
+    author: str
+    description: str
+    cover: str
+    chapters: List[Chapter]
