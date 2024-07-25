@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class ScanService {
   private loadScans(): void {
     this.http.get<any[]>(this.scanDataUrl).subscribe(scans => {
       this.scans.next(scans);
-      this.filteredScans.next(scans);
+      this.filteredScans.next(scans); // Initialize filteredScans with all scans
     });
   }
 
@@ -28,11 +29,9 @@ export class ScanService {
     return this.filteredScans.asObservable();
   }
 
-  searchScans(query: string): void {
-    const filtered = this.scans.getValue().filter(scan =>
-      scan.title.toLowerCase().includes(query.toLowerCase())
-    );
-    this.filteredScans.next(filtered);
+  getScanDetails(mangaTitle: string): Observable<any> {
+    const scanDetailsUrl = `${this.baseUrl}${mangaTitle}/scans.json`;
+    return this.http.get<any>(scanDetailsUrl);
   }
 
   selectScan(scan: any): void {
@@ -44,10 +43,22 @@ export class ScanService {
   }
 
   getMangaCover(manga: string): string {
-    return `${this.baseUrl}$`;
+    return `${this.baseUrl}${manga}/cover.webp`;
   }
 
-  getChapterPages(manga: string, chapter: string): string[] {
-    return Array.from({ length: 5 }, (_, i) => `${this.baseUrl}${manga}/${chapter}/${i + 1}.webp`);
+  getChapterPages(manga: string, chapter: string): Observable<string[]> {
+    return this.getScanDetails(manga).pipe(
+      map(details => {
+        const chapterDetails = details.chapters.find((ch: any) => ch.title === `Chapter ${chapter}`);
+        return chapterDetails ? chapterDetails.pages : [];
+      })
+    );
+  }
+
+  searchScans(query: string): void {
+    const filtered = this.scans.getValue().filter(scan =>
+      scan.title.toLowerCase().includes(query.toLowerCase())
+    );
+    this.filteredScans.next(filtered);
   }
 }

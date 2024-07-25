@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
   scans: any[];
   responsiveOptions: any[];
 
-  constructor(public scanService: ScanService, private router: Router) {
+  constructor(private scanService: ScanService, private router: Router) {
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -70,6 +70,6 @@ export class HomeComponent implements OnInit {
 
   viewScan(scan): void {
     this.scanService.selectScan(scan);
-    this.router.navigate(['/viewer']);
+    this.router.navigate(['/viewer', scan.title]);
   }
 }
