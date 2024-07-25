@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class ScanService {
   private baseUrl = 'https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/';
-  private scanDataUrl = `${this.baseUrl}scans.json`;
+  private mainScanDataUrl = `${this.baseUrl}scans.json`;
 
   private scans = new BehaviorSubject<any[]>([]);
   private filteredScans = new BehaviorSubject<any[]>([]);
@@ -19,7 +19,7 @@ export class ScanService {
   }
 
   private loadScans(): void {
-    this.http.get<any[]>(this.scanDataUrl).subscribe(scans => {
+    this.http.get<any[]>(this.mainScanDataUrl).subscribe(scans => {
       this.scans.next(scans);
       this.filteredScans.next(scans); // Initialize filteredScans with all scans
     });
@@ -29,7 +29,13 @@ export class ScanService {
     return this.filteredScans.asObservable();
   }
 
-  getScanDetails(mangaTitle: string): Observable<any> {
+  getMangaDetails(mangaTitle: string): Observable<any> {
+    return this.scans.pipe(
+      map(scans => scans.find(manga => manga.title === mangaTitle))
+    );
+  }
+
+  getChapterDetails(mangaTitle: string): Observable<any> {
     const scanDetailsUrl = `${this.baseUrl}${mangaTitle}/scans.json`;
     return this.http.get<any>(scanDetailsUrl);
   }
@@ -46,19 +52,10 @@ export class ScanService {
     return `${this.baseUrl}${manga}/cover.webp`;
   }
 
-  getChapterPages(manga: string, chapter: string): Observable<string[]> {
-    return this.getScanDetails(manga).pipe(
-      map(details => {
-        const chapterDetails = details.chapters.find((ch: any) => ch.title === `Chapter ${chapter}`);
-        return chapterDetails ? chapterDetails.pages : [];
-      })
-    );
-  }
-
-  searchScans(query: string): void {
+  searchScans(query: string): Observable<any[]> {
     const filtered = this.scans.getValue().filter(scan =>
       scan.title.toLowerCase().includes(query.toLowerCase())
     );
-    this.filteredScans.next(filtered);
+    return of(filtered);
   }
 }
