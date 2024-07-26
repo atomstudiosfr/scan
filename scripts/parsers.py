@@ -30,9 +30,21 @@ def parse_manga_details(html):
                 author = cells[1].get_text(strip=True)
                 break
 
-    # Find the cover image
-    cover_div = soup.select_one('.bigcover .bigbanner')
-    cover_url = re.search(r"url\('(.+?)'\)", cover_div['style']).group(1)
+    # Attempt to find the cover image from meta tags
+    cover_url = None
+    meta_tag = soup.find('meta', property='og:image')
+    if meta_tag and 'content' in meta_tag.attrs:
+        cover_url = meta_tag['content']
+    else:
+        meta_tag = soup.find('meta', property='og:image:secure_url')
+        if meta_tag and 'content' in meta_tag.attrs:
+            cover_url = meta_tag['content']
+
+    # Fall back to finding the cover image from bigcover and bigbanner
+    if not cover_url:
+        cover_div = soup.select_one('.bigcover .bigbanner')
+        if cover_div:
+            cover_url = re.search(r"url\('(.+?)'\)", cover_div['style']).group(1)
 
     return description, author, cover_url
 

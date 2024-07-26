@@ -20,8 +20,8 @@ export class ScanService {
 
   private loadScans(): void {
     this.http.get<any[]>(this.mainScanDataUrl).subscribe(scans => {
-      this.scans.next(scans);
-      this.filteredScans.next(scans); // Initialize filteredScans with all scans
+      this.scans.next(scans['mangas']);
+      this.filteredScans.next(scans['mangas']); // Initialize filteredScans with all scans
     });
   }
 
