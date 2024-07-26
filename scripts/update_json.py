@@ -1,11 +1,10 @@
-import json
 import os
+import json
+from typing import List
+from schema import SiteConfig, Manga, Chapter
 
-from config import config
-
-
-def update_root_scans_json(manga_title, description, author, cover_url):
-    json_path = os.path.join(config['downloads_dir'], 'scans.json')
+def update_root_scans_json(site: SiteConfig, manga_title: str, description: str, author: str, cover_url: str):
+    json_path = os.path.join(site.downloads_dir, 'scans.json')
     data = []
 
     if os.path.exists(json_path):
@@ -18,20 +17,20 @@ def update_root_scans_json(manga_title, description, author, cover_url):
     # Check if manga entry already exists
     manga_entry = next((item for item in data if item['title'] == manga_title), None)
     if not manga_entry:
-        manga_entry = {
-            'title': manga_title,
-            'author': author,
-            'description': description,
-            'cover': f"{config['base_url']}{manga_title}/cover.webp"
-        }
-        data.append(manga_entry)
+        manga_entry = Manga(
+            title=manga_title,
+            author=author,
+            description=description,
+            cover=cover_url,
+            chapters=[]
+        )
+        data.append(manga_entry.dict())
 
     with open(json_path, 'w') as f:
-        json.dump(data, f, indent=4)
-    print(f"Updated root scans.json with {manga_title}")
+        json.dump(data, f, indent=4, default=str)
+    print(f"Updated scans.json with {manga_title}")
 
-
-def update_manga_scans_json(manga_dir, chapter_number, images):
+def update_manga_scans_json(site: SiteConfig, manga_dir: str, chapter_number: str, images: List[str]):
     # Sort images by filename
     images = sorted(images, key=lambda x: int(os.path.splitext(os.path.basename(x))[0]))
 
@@ -46,24 +45,24 @@ def update_manga_scans_json(manga_dir, chapter_number, images):
             print(f"Error reading JSON file: {e}")
 
     # Convert local paths to URLs
-    images = [os.path.join(config['base_url'], os.path.relpath(image, config['downloads_dir'])).replace('\\', '/') for image in images]
+    images = [os.path.join(site.base_url.__str__(), os.path.relpath(image, site.downloads_dir)).replace('\\', '/') for image in images]
 
     # Find the chapter entry if it exists
     chapter_entry = None
     for chapter in data:
-        if chapter['chapter'] == chapter_number:
+        if chapter['number'] == chapter_number:
             chapter_entry = chapter
             break
 
     if chapter_entry:
         chapter_entry['pages'] = images
     else:
-        chapter_entry = {
-            'chapter': chapter_number,
-            'pages': images
-        }
-        data.append(chapter_entry)
+        chapter_entry = Chapter(
+            number=chapter_number,
+            pages=images
+        )
+        data.append(chapter_entry.dict())
 
     with open(json_path, 'w') as f:
-        json.dump(data, f, indent=4)
+        json.dump(data, f, indent=4, default=str)
     print(f"Updated scans.json for manga: {os.path.basename(manga_dir)}, chapter: {chapter_number}")

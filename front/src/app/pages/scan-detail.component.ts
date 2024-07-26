@@ -100,7 +100,6 @@ export class ScanDetailComponent implements OnInit {
       this.scanService.getMangaDetails(mangaTitle).subscribe(mangaData => {
         this.manga = mangaData;
         this.scanService.getChapterDetails(mangaTitle).subscribe(chapterData => {
-            console.log(chapterData);
           this.chapters = chapterData;
         });
       });
