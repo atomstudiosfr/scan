@@ -4,6 +4,10 @@ from utils import fetch_page, save_images, save_image, clean_directory, extract_
 from parsers import parse_manga_list_page, parse_manga_page, parse_manga_details, parse_chapter_page
 from update_json import update_root_scans_json, update_manga_scans_json
 
+def get_cleaned_images(chapter_dir):
+    # List all files in the directory after cleaning
+    return [os.path.join(chapter_dir, f) for f in os.listdir(chapter_dir) if os.path.isfile(os.path.join(chapter_dir, f))]
+
 def main():
     main_page_html = fetch_page(config['site_url'])
     if main_page_html:
@@ -24,8 +28,9 @@ def main():
                     images = parse_chapter_page(chapter_page_html)
                     chapter_dir = os.path.join(manga_dir, str(next_chapter))
                     save_images(images, chapter_dir)
-                    update_manga_scans_json(manga_dir, str(next_chapter), images)
                     clean_directory(chapter_dir)  # Clean directory after each chapter download
+                    cleaned_images = get_cleaned_images(chapter_dir)  # Get the cleaned list of images
+                    update_manga_scans_json(manga_dir, str(next_chapter), cleaned_images)
                 continue
 
             print(f"Fetching manga: {manga_title}")
@@ -55,8 +60,9 @@ def main():
                     if chapter_page_html:
                         images = parse_chapter_page(chapter_page_html)
                         save_images(images, chapter_dir)
-                        update_manga_scans_json(manga_dir, chapter_number, images)
                         clean_directory(chapter_dir)  # Clean directory after each chapter download
+                        cleaned_images = get_cleaned_images(chapter_dir)  # Get the cleaned list of images
+                        update_manga_scans_json(manga_dir, chapter_number, cleaned_images)
 
 if __name__ == "__main__":
     main()

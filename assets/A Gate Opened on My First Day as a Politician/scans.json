@@ -1,94 +1,40 @@
-{
-    "chapters": [
-        {
-            "title": "Chapter 52",
-            "pages": [
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/logo.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/Start-Panel.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/3.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/4.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/5.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/6.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/7.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/8.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/9.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/10.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/11.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/12.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/13.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/14.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/15.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/16.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/17.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/18.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/readerarea.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/Ending-Panel.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/Eternal-Club-220x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/Raising-the-Princess-to-Overcome-Death-210x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/Damn-Reincarnation-2-210x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/This-is-the-Law-222x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/I-Am-the-Fated-Villain-1-214x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/White-Blood-218x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/52/The-Warrior-Returns-207x300.webp"
-            ]
-        },
-        {
-            "title": "Chapter 51",
-            "pages": [
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/logo.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/Start-Panel.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/3.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/4.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/5.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/6.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/7.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/8.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/9.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/10.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/11.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/12.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/13.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/14.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/readerarea.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/Ending-Panel.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/Return-of-the-SSS-Class-Ranker-210x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/I-Picked-A-Hammer-To-Save-The-World-207x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/Return-of-the-Disaster-Class-Hero-200x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/The-Nebulas-Civilization-231x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/Foreigner-on-the-Periphery-207x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/Archmage-Transcending-Through-Regression-222x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/51/The-Extra-Academy-Survival-Guide-1-207x300.webp"
-            ]
-        },
-        {
-            "title": "Chapter 50",
-            "pages": [
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/logo.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/Start-Panel.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/3.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/4.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/5.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/6.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/7.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/8.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/9.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/10.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/11.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/12.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/13.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/14.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/15.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/16.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/readerarea.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/Ending-Panel.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/Infinite-Mage-1-210x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/Doctors-Rebirth-198x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/Bloodhounds-Regression-Instinct-1-207x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/How-to-Use-a-Returner-200x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/Questism-231x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/SSS-Class-Suicide-Hunter_auto_x2-1-200x300.webp",
-                "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/A Gate Opened on My First Day as a Politician/50/The-Possessed-Genius-Gaming-Stream-1-224x300.webp"
-            ]
-        }
-    ]
-}
+[
+    {
+        "chapter": "52",
+        "pages": [
+            "../assets/A Gate Opened on My First Day as a Politician/52/3.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/52/4.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/52/5.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/52/6.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/52/7.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/52/8.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/52/9.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/52/10.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/52/11.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/52/12.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/52/13.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/52/14.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/52/15.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/52/16.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/52/17.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/52/18.webp"
+        ]
+    },
+    {
+        "chapter": "51",
+        "pages": [
+            "../assets/A Gate Opened on My First Day as a Politician/51/3.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/51/4.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/51/5.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/51/6.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/51/7.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/51/8.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/51/9.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/51/10.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/51/11.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/51/12.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/51/13.webp",
+            "../assets/A Gate Opened on My First Day as a Politician/51/14.webp"
+        ]
+    }
+]

@@ -6,9 +6,8 @@ on:
     branches:
       - 'main'
     paths:
-      - 'frontend/**'
-      - '.github/workflows/frontend.yml'
-
+      - 'front/**'
+      - '.github/workflows/front.yml'
 
 jobs:
   build:
@@ -25,9 +24,11 @@ jobs:
 
     - name: Install Dependencies
       run: npm install
+      working-directory: front
 
     - name: Build Application
       run: npm run build -- --base-href="front"
+      working-directory: front
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3

@@ -1,9 +1,0 @@
-# Scraping
-beautifulsoup4==4.12.3
-
-#### Task
-celery[pytest]==5.3.6
-gevent==24.2.1
-redis==5.0.3
-flower==2.0.1
-azure-storage-blob==12.19.1

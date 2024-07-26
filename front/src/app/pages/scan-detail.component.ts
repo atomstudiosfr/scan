@@ -107,7 +107,6 @@ export class ScanDetailComponent implements OnInit {
   }
 
   viewChapter(chapter: any): void {
-    // Logic to view the chapter
-    console.log('Viewing chapter:', chapter);
+    this.router.navigate(['/viewer', this.manga.title, chapter.title]);
   }
 }

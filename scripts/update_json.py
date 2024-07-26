@@ -31,9 +31,12 @@ def update_root_scans_json(manga_title, description, author, cover_url):
     print(f"Updated root scans.json with {manga_title}")
 
 
-def update_manga_scans_json(manga_dir, chapter_title, image_urls):
+def update_manga_scans_json(manga_dir, chapter_number, images):
+    # Sort images by filename
+    images = sorted(images, key=lambda x: int(os.path.splitext(os.path.basename(x))[0]))
+
     json_path = os.path.join(manga_dir, 'scans.json')
-    data = {'chapters': []}
+    data = []
 
     if os.path.exists(json_path):
         try:
@@ -42,14 +45,22 @@ def update_manga_scans_json(manga_dir, chapter_title, image_urls):
         except json.JSONDecodeError as e:
             print(f"Error reading JSON file: {e}")
 
-    # Create a new chapter entry
-    chapter_entry = {
-        'title': f"Chapter {chapter_title}",
-        'pages': [f"{config['base_url']}{os.path.basename(manga_dir)}/{chapter_title}/{os.path.splitext(url.split('/')[-1])[0]}.webp" for
-                  url in image_urls]
-    }
-    data['chapters'].append(chapter_entry)
+    # Find the chapter entry if it exists
+    chapter_entry = None
+    for chapter in data:
+        if chapter['chapter'] == chapter_number:
+            chapter_entry = chapter
+            break
+
+    if chapter_entry:
+        chapter_entry['pages'] = images
+    else:
+        chapter_entry = {
+            'chapter': chapter_number,
+            'pages': images
+        }
+        data.append(chapter_entry)
 
     with open(json_path, 'w') as f:
         json.dump(data, f, indent=4)
-    print(f"Updated scans.json in {manga_dir} with Chapter {chapter_title}")
+    print(f"Updated scans.json for manga: {os.path.basename(manga_dir)}, chapter: {chapter_number}")
