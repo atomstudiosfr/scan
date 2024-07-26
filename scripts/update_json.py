@@ -1,7 +1,9 @@
-import os
 import json
+import os
 from typing import List
-from schema import SiteConfig, Manga, Chapter
+
+from schema import SiteConfig, Chapter
+
 
 def update_root_scans_json(site: SiteConfig, manga_title: str, description: str, author: str, cover_url: str):
     json_path = os.path.join(site.downloads_dir, 'scans.json')
@@ -14,6 +16,9 @@ def update_root_scans_json(site: SiteConfig, manga_title: str, description: str,
         except json.JSONDecodeError as e:
             print(f"Error reading JSON file: {e}")
 
+    # The cover URL saved in the JSON should use the path in the assets folder
+    cover_path = os.path.join(site.base_url.__str__(), f"{manga_title}/cover.webp").replace('\\', '/')
+
     # Check if manga entry already exists
     manga_entry = next((item for item in data["mangas"] if item['title'] == manga_title), None)
     if not manga_entry:
@@ -21,13 +26,14 @@ def update_root_scans_json(site: SiteConfig, manga_title: str, description: str,
             "title": manga_title,
             "author": author,
             "description": description,
-            "cover": cover_url
+            "cover": cover_path
         }
         data["mangas"].append(manga_entry)
 
     with open(json_path, 'w') as f:
         json.dump(data, f, indent=4, default=str)
     print(f"Updated scans.json with {manga_title}")
+
 
 def update_manga_scans_json(site: SiteConfig, manga_dir: str, chapter_number: str, images: List[str]):
     # Sort images by filename
