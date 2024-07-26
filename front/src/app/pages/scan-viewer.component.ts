@@ -1,17 +1,17 @@
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ScanListComponent} from './scan-list.component';
-import {ScanDetailsComponent} from './scan-details.component';
+import {ScanDetailComponent} from './scan-detail.component';
 import {ScanReaderComponent} from './scan-reader.component';
 
 @Component({
     selector: 'app-scan-viewer',
     standalone: true,
-    imports: [CommonModule, ScanListComponent, ScanDetailsComponent, ScanReaderComponent],
+    imports: [CommonModule, ScanListComponent, ScanDetailComponent, ScanReaderComponent],
     template: `
         <div class="scan-viewer">
             <app-scan-list></app-scan-list>
-            <app-scan-details></app-scan-details>
+            <app-scan-detail></app-scan-detail>
             <app-scan-reader></app-scan-reader>
         </div>
     `,

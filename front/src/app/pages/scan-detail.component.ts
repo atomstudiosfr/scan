@@ -26,7 +26,7 @@ import { CardModule } from 'primeng/card';
           <div *ngFor="let chapter of chapters" class="chapter-card" (click)="viewChapter(chapter)">
             <p-card>
               <ng-template pTemplate="title">
-                {{chapter.title}}
+                {{chapter.chapter}}
               </ng-template>
             </p-card>
           </div>
@@ -100,13 +100,14 @@ export class ScanDetailComponent implements OnInit {
       this.scanService.getMangaDetails(mangaTitle).subscribe(mangaData => {
         this.manga = mangaData;
         this.scanService.getChapterDetails(mangaTitle).subscribe(chapterData => {
-          this.chapters = chapterData.chapters;
+            console.log(chapterData);
+          this.chapters = chapterData;
         });
       });
     }
   }
 
   viewChapter(chapter: any): void {
-    this.router.navigate(['/viewer', this.manga.title, chapter.title]);
+    this.router.navigate(['/viewer', this.manga.title, chapter.chapter]);
   }
 }

@@ -6,5 +6,6 @@ import { ChapterViewerComponent } from './pages/chapter-viewer.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'viewer/:title', component: ScanDetailComponent },
-  { path: 'viewer/:manga/:chapter', component: ChapterViewerComponent }
+  { path: 'viewer/:manga/:chapter', component: ChapterViewerComponent },
+  { path: '**', redirectTo: '', pathMatch: 'full' }  // Wildcard route to handle undefined routes
 ];

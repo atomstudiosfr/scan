@@ -45,6 +45,9 @@ def update_manga_scans_json(manga_dir, chapter_number, images):
         except json.JSONDecodeError as e:
             print(f"Error reading JSON file: {e}")
 
+    # Convert local paths to URLs
+    images = [os.path.join(config['base_url'], os.path.relpath(image, config['downloads_dir'])).replace('\\', '/') for image in images]
+
     # Find the chapter entry if it exists
     chapter_entry = None
     for chapter in data:
