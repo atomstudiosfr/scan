@@ -17,7 +17,7 @@ import { ThemeService } from '../services/theme.service';
   template: `
     <p-menubar [model]="items">
       <ng-template pTemplate="start">
-        <img src="assets/logo.webp" height="40" alt="logo">
+        <img src="assets/logo.webp" routerLink="/" height="40" alt="logo">
       </ng-template>
       <ng-template pTemplate="end">
         <p-autoComplete
