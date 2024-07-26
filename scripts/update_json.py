@@ -5,7 +5,7 @@ from schema import SiteConfig, Manga, Chapter
 
 def update_root_scans_json(site: SiteConfig, manga_title: str, description: str, author: str, cover_url: str):
     json_path = os.path.join(site.downloads_dir, 'scans.json')
-    data = []
+    data = {"mangas": []}
 
     if os.path.exists(json_path):
         try:
@@ -15,16 +15,15 @@ def update_root_scans_json(site: SiteConfig, manga_title: str, description: str,
             print(f"Error reading JSON file: {e}")
 
     # Check if manga entry already exists
-    manga_entry = next((item for item in data if item['title'] == manga_title), None)
+    manga_entry = next((item for item in data["mangas"] if item['title'] == manga_title), None)
     if not manga_entry:
-        manga_entry = Manga(
-            title=manga_title,
-            author=author,
-            description=description,
-            cover=cover_url,
-            chapters=[]
-        )
-        data.append(manga_entry.dict())
+        manga_entry = {
+            "title": manga_title,
+            "author": author,
+            "description": description,
+            "cover": cover_url
+        }
+        data["mangas"].append(manga_entry)
 
     with open(json_path, 'w') as f:
         json.dump(data, f, indent=4, default=str)
