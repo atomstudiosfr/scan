@@ -42,7 +42,7 @@ export class ChapterViewerComponent implements OnInit {
     this.mangaTitle = this.route.snapshot.paramMap.get('manga');
     this.chapterTitle = this.route.snapshot.paramMap.get('chapter');
     this.scanService.getChapterDetails(this.mangaTitle).subscribe(data => {
-      const chapter = data.find(ch => ch.chapter === this.chapterTitle);
+      const chapter = data.find(ch => ch.title === this.chapterTitle);
       if (chapter) {
         this.pages = chapter.pages;
       }
