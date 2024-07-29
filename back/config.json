@@ -5,7 +5,7 @@
       "base_url": "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/",
       "downloads_dir": "../assets",
       "site_url": "https://reaper-scans.com/manga/list-mode/",
-      "ignore_existing_manga": true,
+      "ignore_existing_manga": false,
       "ignore_existing_chapter": true,
       "check_new_chapters": true,
       "overwrite": false

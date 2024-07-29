@@ -25,7 +25,7 @@ def main():
                 if site.check_new_chapters and os.path.exists(manga_dir):
                     highest_chapter = get_highest_chapter(manga_dir)
                     next_chapter = highest_chapter + 1
-                    chapter_url = manga_url + f'/chapter-{next_chapter}/'
+                    chapter_url = manga_url + f'chapter-{next_chapter}/'
                     chapter_page_html = fetch_page(chapter_url)
                     if chapter_page_html:
                         print(f"Found new chapter: {next_chapter} for manga: {manga_title}")

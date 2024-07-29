@@ -1,16 +1,22 @@
 import os
 import re
+
 import requests
 from PIL import Image
+
 
 def fetch_page(url):
     try:
         response = requests.get(url)
         response.raise_for_status()
+        if response.url != url.__str__():
+            print(f"Warning: Redirected URL. Expected: {url}, but got: {response.url}")
+            return None
         return response.text
     except requests.exceptions.RequestException as e:
         print(f"Error fetching {url}: {e}")
         return None
+
 
 def convert_to_webp(image_path):
     try:
@@ -23,6 +29,7 @@ def convert_to_webp(image_path):
     except Exception as e:
         print(f"Error converting {image_path} to WebP: {e}")
         return image_path
+
 
 def save_images(image_urls, save_dir, overwrite=False):
     if not os.path.exists(save_dir):
@@ -52,6 +59,7 @@ def save_images(image_urls, save_dir, overwrite=False):
             print(f"Error downloading {url}: {e}")
     return webp_images
 
+
 def save_image(url, path, overwrite=False):
     directory = os.path.dirname(path)
     if not os.path.exists(directory):
@@ -74,6 +82,7 @@ def save_image(url, path, overwrite=False):
     except requests.exceptions.RequestException as e:
         print(f"Error downloading {url}: {e}")
 
+
 def clean_directory(directory):
     pattern = re.compile(r"^(chapter[-_]?\d+|\d+)\..+$", re.IGNORECASE)
     for root, _, files in os.walk(directory):
@@ -83,22 +92,24 @@ def clean_directory(directory):
                 os.remove(file_path)
                 print(f"Removed {file_path}")
 
+
 def extract_chapter_number(chapter_url):
     match = re.search(r'(\d+)(?!.*\d)', chapter_url)
     if match:
-        return match.group(1)
-    return 'unknown'
+        return int(match.group(1))
+    return None
 
 def get_highest_chapter(manga_dir):
     chapters = [int(d) for d in os.listdir(manga_dir) if os.path.isdir(os.path.join(manga_dir, d)) and d.isdigit()]
     return max(chapters) if chapters else 0
+
 
 def clean_chapters(chapters):
     cleaned_chapters = []
     seen = set()
     for chapter in chapters:
         chapter_number = extract_chapter_number(chapter)
-        if chapter_number not in seen:
+        if chapter_number is not None and chapter_number not in seen:
             seen.add(chapter_number)
             cleaned_chapters.append(chapter)
     return cleaned_chapters
