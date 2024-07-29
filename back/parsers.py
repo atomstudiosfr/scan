@@ -2,6 +2,7 @@ import re
 
 from bs4 import BeautifulSoup
 
+
 def parse_manga_list_page(html):
     soup = BeautifulSoup(html, 'html.parser')
     manga_links = []
@@ -9,12 +10,14 @@ def parse_manga_list_page(html):
         manga_links.append((link['href'], link.get_text()))
     return manga_links
 
+
 def parse_manga_page(html):
     soup = BeautifulSoup(html, 'html.parser')
     chapters = []
     for chapter in soup.select('.eph-num a'):
         chapters.append(chapter['href'])
     return chapters
+
 
 def parse_manga_details(html):
     soup = BeautifulSoup(html, 'html.parser')
@@ -48,7 +51,8 @@ def parse_manga_details(html):
 
     return description, author, cover_url
 
-def parse_chapter_page(html):
+
+async def parse_chapter_page(html):
     soup = BeautifulSoup(html, 'html.parser')
     images = []
     for img in soup.select('img'):
