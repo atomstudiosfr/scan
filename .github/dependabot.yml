@@ -9,7 +9,14 @@ updates:
       prefix: ⬆
   # Python
   - package-ecosystem: "pip"
-    directory: "/"
+    directory: "back"
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: ⬆
+  # Npm
+  - package-ecosystem: "npm"
+    directory: "front"
     schedule:
       interval: "daily"
     commit-message:
