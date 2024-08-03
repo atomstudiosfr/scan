@@ -1,5 +1,6 @@
 from pydantic import BaseModel, HttpUrl
-from typing import List
+from typing import List, Dict
+
 
 class Chapter(BaseModel):
     number: str
@@ -21,6 +22,7 @@ class SiteConfig(BaseModel):
     ignore_existing_chapter: bool
     check_new_chapters: bool
     overwrite: bool
+    selectors: Dict[str, str]
 
 class Config(BaseModel):
     sites: List[SiteConfig]

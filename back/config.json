@@ -4,11 +4,23 @@
       "name": "Reaper Scans",
       "base_url": "https://raw.githubusercontent.com/atomstudiosfr/scan/main/assets/",
       "downloads_dir": "../assets",
-      "site_url": "https://reaper-scans.com/manga/list-mode/",
+      "site_url": "https://reaper-scans.com/series/",
       "ignore_existing_manga": false,
       "ignore_existing_chapter": true,
       "check_new_chapters": true,
-      "overwrite": false
+      "overwrite": false,
+      "selectors": {
+        "manga_list_selector": "a[title]",
+        "chapter_selector": ".eph-num a",
+        "description_selector": ".entry-content.entry-content-single[itemprop='description']",
+        "author_table_selector": "table.infotable",
+        "author_row_selector": "tr",
+        "author_label": "Author",
+        "cover_meta_property": "og:image",
+        "cover_meta_secure_property": "og:image:secure_url",
+        "cover_div_selector": ".bigcover .bigbanner",
+        "image_selector": "img.aligncenter"
+      }
     }
   ]
 }

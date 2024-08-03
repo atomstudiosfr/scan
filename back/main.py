@@ -1,10 +1,9 @@
-import asyncio
 import os
-
+import asyncio
 from config import config
+from utils import fetch_page, save_images, save_image, clean_directory, extract_chapter_number, get_highest_chapter, clean_chapters
 from parsers import parse_manga_list_page, parse_manga_page, parse_manga_details, parse_chapter_page
 from update_json import update_root_scans_json, update_manga_scans_json
-from utils import fetch_page, save_images, save_image, clean_directory, extract_chapter_number, clean_chapters
 
 
 async def get_cleaned_images(chapter_dir):
@@ -22,7 +21,7 @@ async def process_chapter(site, manga_dir, chapter_url):
         return
     chapter_page_html = await fetch_page(chapter_url)
     if chapter_page_html:
-        images = await parse_chapter_page(chapter_page_html)
+        images = await parse_chapter_page(chapter_page_html, site.selectors)
         webp_images = await save_images(images, chapter_dir, site.overwrite)
         clean_directory(chapter_dir)
         cleaned_images = await get_cleaned_images(chapter_dir)
@@ -36,26 +35,35 @@ async def process_manga(site, manga_url, manga_title):
         return
     manga_page_html = await fetch_page(manga_url)
     if manga_page_html:
-        description, author, cover_url = parse_manga_details(manga_page_html)
-        update_root_scans_json(site, manga_title, description, author, cover_url)
+        description, author, cover_url = await parse_manga_details(manga_page_html, site.selectors)
         if cover_url:
             cover_path = os.path.join(manga_dir, 'cover.webp')
             await save_image(cover_url, cover_path, site.overwrite)
-        chapters = parse_manga_page(manga_page_html)
+        chapters = await parse_manga_page(manga_page_html, site.selectors)
         chapters = clean_chapters(chapters)
         chapters = [ch for ch in chapters if extract_chapter_number(ch) is not None]
         chapters.sort(key=extract_chapter_number)
-        tasks = [process_chapter(site, manga_dir, ch) for ch in chapters]
-        await asyncio.gather(*tasks)
+
+        # Process chapters in batches of 10
+        for i in range(0, len(chapters), 10):
+            batch = chapters[i:i + 10]
+            tasks = [process_chapter(site, manga_dir, ch) for ch in batch]
+            await asyncio.gather(*tasks)
+
+        # Update root scans.json after processing all chapters
+        update_root_scans_json(site, manga_title, description, author, cover_url)
 
 
 async def main():
     for site in config.sites:
         main_page_html = await fetch_page(site.site_url)
         if main_page_html:
-            manga_links = parse_manga_list_page(main_page_html)
+            manga_links = parse_manga_list_page(main_page_html, site.selectors)
             for manga_url, manga_title in manga_links:
-                await process_manga(site, manga_url, manga_title)  # Ensure mangas are processed sequentially
+                try:
+                    await process_manga(site, manga_url, manga_title)  # Ensure mangas are processed sequentially
+                except:
+                    pass
 
 
 if __name__ == "__main__":

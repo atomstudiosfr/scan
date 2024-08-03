@@ -1,22 +1,24 @@
+import asyncio
 import os
 import re
+
 import httpx
-import asyncio
 from PIL import Image
 from pydantic_core import Url
 
 
 async def fetch_page(url: Url):
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(timeout=httpx.Timeout(300.0, read=300.0), follow_redirects=True) as client:
         try:
             response = await client.get(url.__str__())
             response.raise_for_status()
-            if str(response.url) != url:
+            if str(response.url) != url.__str__():
                 print(f"Warning: Redirected URL. Expected: {url}, but got: {response.url}")
             return response.text
         except httpx.HTTPStatusError as e:
             print(f"Error fetching {url}: {e}")
             return None
+
 
 async def convert_to_webp(image_path):
     try:
@@ -30,16 +32,17 @@ async def convert_to_webp(image_path):
         print(f"Error converting {image_path} to WebP: {e}")
         return image_path
 
+
 async def save_images(image_urls, save_dir, overwrite=False):
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
-    webp_images = []
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(timeout=httpx.Timeout(300.0, read=300.0)) as client:
         tasks = []
         for url in image_urls:
             tasks.append(download_image(client, url, save_dir, overwrite))
         webp_images = await asyncio.gather(*tasks)
     return webp_images
+
 
 async def download_image(client, url, save_dir, overwrite):
     try:
@@ -64,11 +67,12 @@ async def download_image(client, url, save_dir, overwrite):
         print(f"Error downloading {url}: {e}")
         return None
 
+
 async def save_image(url, path, overwrite=False):
     directory = os.path.dirname(path)
     if not os.path.exists(directory):
         os.makedirs(directory)
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(timeout=httpx.Timeout(300.0, read=300.0)) as client:
         try:
             response = await client.get(url.__str__())
             response.raise_for_status()
@@ -87,6 +91,7 @@ async def save_image(url, path, overwrite=False):
         except httpx.HTTPStatusError as e:
             print(f"Error downloading {url}: {e}")
 
+
 def clean_directory(directory):
     pattern = re.compile(r"^(chapter[-_]?\d+|\d+)\..+$", re.IGNORECASE)
     for root, _, files in os.walk(directory):
@@ -96,15 +101,18 @@ def clean_directory(directory):
                 os.remove(file_path)
                 print(f"Removed {file_path}")
 
+
 def extract_chapter_number(chapter_url):
     match = re.search(r'(\d+)(?!.*\d)', chapter_url)
     if match:
         return int(match.group(1))
     return None
 
+
 def get_highest_chapter(manga_dir):
     chapters = [int(d) for d in os.listdir(manga_dir) if os.path.isdir(os.path.join(manga_dir, d)) and d.isdigit()]
     return max(chapters) if chapters else 0
+
 
 def clean_chapters(chapters):
     cleaned_chapters = []
