@@ -1,9 +1,10 @@
-import os
 import asyncio
+import os
+
 from config import config
-from utils import fetch_page, save_images, save_image, clean_directory, extract_chapter_number, get_highest_chapter, clean_chapters
 from parsers import parse_manga_list_page, parse_manga_page, parse_manga_details, parse_chapter_page
 from update_json import update_root_scans_json, update_manga_scans_json
+from utils import fetch_page, save_images, save_image, extract_chapter_number, clean_chapters
 
 
 async def get_cleaned_images(chapter_dir):
@@ -23,8 +24,8 @@ async def process_chapter(site, manga_dir, chapter_url):
     if chapter_page_html:
         images = await parse_chapter_page(chapter_page_html, site.selectors)
         webp_images = await save_images(images, chapter_dir, site.overwrite)
-        clean_directory(chapter_dir)
-        cleaned_images = await get_cleaned_images(chapter_dir)
+        # clean_directory(chapter_dir)
+        # cleaned_images = await get_cleaned_images(chapter_dir)
         update_manga_scans_json(site, manga_dir, str(chapter_number), cleaned_images)
 
 
@@ -48,7 +49,10 @@ async def process_manga(site, manga_url, manga_title):
         for i in range(0, len(chapters), 10):
             batch = chapters[i:i + 10]
             tasks = [process_chapter(site, manga_dir, ch) for ch in batch]
-            await asyncio.gather(*tasks)
+            try:
+                await asyncio.gather(*tasks)
+            except Exception as e:
+                print(f"Error processing batch {i // 10 + 1}: {e}")
 
         # Update root scans.json after processing all chapters
         update_root_scans_json(site, manga_title, description, author, cover_url)
